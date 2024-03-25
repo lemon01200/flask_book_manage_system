@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑书籍</title>
+</head>
+<body>
+<h1>编辑书籍</h1>
+<form method="post">
+    {% if 'csrf_token' in form %}
+        {{data_form.csrf_token}}
+   {% endif %}
+    <!--显示表单-->
+    {{ data_form.bookname.label}} {{ data_form.bookname }}<br>
+    {{ data_form.author.label }} {{ data_form.author }}<br>
+    {{ data_form.price.label }} {{ data_form.price }}<br>
+    {{ data_form.input }}<button type="button"><a href="{{url_for("index")}}">返回首页</a></button><br>
+    <!--将flash闪现内容显示-->
+    <!--将错误内容显示-->
+    {% for message in get_flashed_messages() %}
+        {{ message }}
+    {% endfor %}
+</form>
+</body>
+</html>

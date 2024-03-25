@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button type="button"><a href="{{url_for("add_book")}}" target=" __blank">添加图书</a><br/></button>
+{# 表格循环输出输出user的信息 #}
+<h2>图书信息</h2>
+    <table border="1" cellspacing="0" width="90%">
+        <tr>
+            <td>序号</td>
+            <td>书名</td>
+            <td>价格</td>
+            <td>作者</td>
+            <td>操作</td>
+        </tr>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.bookname }}</td>
+                <td>{{ book.price }}</td>
+                <td>{{ book.author }}</td>
+                <td><a href="{{url_for("delete",book_id=book.id)}}">删除</a>
+                    {# <a href="{{url_for("edit", user_id=add.id, find_user=find_user)}}" target=" __blank">编辑</a></td> #}
+                    <a href="http://127.0.0.1:5000/edit?book_id={{ book.id }}&find_book={{ find_book }}" target=" __blank">编辑</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+</body>
+</html>
